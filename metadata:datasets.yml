@@ -1,0 +1,18 @@
+datasets:
+  employee:
+    source_folder: employee
+    file_format: csv
+    primary_keys: [employee_id]
+    sequence_column: updated_at
+    allowed_load_modes: [snapshot, incremental]
+    bronze_table: replication_catalog.bronze.employee
+    silver_table: replication_catalog.silver.employee
+
+  policy:
+    source_folder: policy
+    file_format: csv
+    primary_keys: [policy_id]
+    sequence_column: updated_at
+    allowed_load_modes: [snapshot, incremental]
+    bronze_table: replication_catalog.bronze.policy
+    silver_table: replication_catalog.silver.policy
