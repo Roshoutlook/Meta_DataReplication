@@ -2,7 +2,15 @@ datasets:
   employee:
     source_folder: employee
     file_format: csv
-    primary_keys: [employee_id]
+    columns:
+      - EmployeeID
+      - Name
+      - Department
+      - Designation
+      - Salary
+      - JoiningDate
+      - updated_at
+    primary_keys: [EmployeeID]
     sequence_column: updated_at
     allowed_load_modes: [snapshot, incremental]
     bronze_table: replication_catalog.bronze.employee
@@ -11,7 +19,15 @@ datasets:
   policy:
     source_folder: policy
     file_format: csv
-    primary_keys: [policy_id]
+    columns:
+      - PolicyID
+      - PolicyName
+      - PolicyType
+      - Premium
+      - StartDate
+      - EndDate
+      - updated_at
+    primary_keys: [PolicyID]
     sequence_column: updated_at
     allowed_load_modes: [snapshot, incremental]
     bronze_table: replication_catalog.bronze.policy
