@@ -1,0 +1,7 @@
+batch_id: employee_002
+dataset: employee
+load_mode: incremental
+sequence: 2
+files:
+  - employee_002.csv
+complete: true
