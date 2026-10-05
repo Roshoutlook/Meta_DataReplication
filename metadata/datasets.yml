@@ -1,34 +1,40 @@
 datasets:
   employee:
-    source_folder: employee
+    source_path: abfss://input@replstorageacc.dfs.core.windows.net/employee/Employee.csv
     file_format: csv
-    columns:
-      - EmployeeID
+    primary_keys: [EmployeeID]
+    target_table: replication_catalog.silver.employee_scd2
+    schema:
+      EmployeeID: int
+      Name: string
+      Department: string
+      Designation: string
+      Salary: decimal(18,2)
+      JoiningDate: date
+      updated_at: timestamp
+    tracked_columns:
       - Name
       - Department
       - Designation
       - Salary
       - JoiningDate
-      - updated_at
-    primary_keys: [EmployeeID]
-    sequence_column: updated_at
-    allowed_load_modes: [snapshot, incremental]
-    bronze_table: replication_catalog.bronze.employee
-    silver_table: replication_catalog.silver.employee
 
   policy:
-    source_folder: policy
+    source_path: abfss://input@replstorageacc.dfs.core.windows.net/policy/Policy.csv
     file_format: csv
-    columns:
-      - PolicyID
+    primary_keys: [PolicyID]
+    target_table: replication_catalog.silver.policy_scd2
+    schema:
+      PolicyID: int
+      PolicyName: string
+      PolicyType: string
+      Premium: decimal(18,2)
+      StartDate: date
+      EndDate: date
+      updated_at: timestamp
+    tracked_columns:
       - PolicyName
       - PolicyType
       - Premium
       - StartDate
       - EndDate
-      - updated_at
-    primary_keys: [PolicyID]
-    sequence_column: updated_at
-    allowed_load_modes: [snapshot, incremental]
-    bronze_table: replication_catalog.bronze.policy
-    silver_table: replication_catalog.silver.policy
